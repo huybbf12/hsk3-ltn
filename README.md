@@ -1,18 +1,35 @@
-# HSK Studio v2
-Static personal study app. Serve the root with an HTTP server, or import the repository into Vercel with Framework Preset Other, no build command, root output.
+# Panda HSK Studio — bản sửa PDF/audio (v3)
 
-## Library
-Six official published papers from Chinese Test: H10901, H20901, H31001, H41001, H51001, H61001. Each has a real source PDF link and official audio archive link, with an independent answer sheet. Source: https://old.chinesetest.cn/godownload.do
-PDFs remain hosted by Chinese Test. Embedding depends on browser support/source response; use the open-in-new-tab or local PDF fallback. Audio archives are RAR: download, extract, then load the MP3 in the local player. Files are not uploaded. The HSK 3.0 experience/sample pack links open the official external resources.
+Ứng dụng luyện HSK độc lập. Giao diện gấu trúc, tre, núi và dấu son.
 
-## Features
-Search, level filtering, favorites, per-paper resume, timed/free practice, flags, unanswered navigation, Chinese writing, local audio with speed controls, history, JSON and CSV export. H31001 objective questions 1–70 are checked against the official key; writing is shown for manual comparison. Other official papers use manual comparison with the answer key in the PDF. Practice scores are not certificate scores. The previous 40-question original exercise remains at practice.html.
+## Chạy và triển khai
 
-## Limits
-This is a PDF practice workspace, not an exact official computer exam clone. Whole-paper timers do not lock individual sections. External resources require network access. Progress is local to the browser. No account sync or anti-cheating. Browser file handles must be reselected after reload. Up to 50 completed official-paper attempts are stored.
+- Giải nén toàn bộ, giữ nguyên thư mục assets và vendor.
+- Chạy `python3 -m http.server 4173`, mở http://localhost:4173 . Không mở index.html bằng file:// vì trình đọc PDF dùng JavaScript modules.
+- Vercel: Framework Preset Other, không cần install/build command, Output Directory để trống (gốc dự án). Upload/push toàn bộ nội dung, không chỉ index.html.
+- Bản này chưa được triển khai lên tài khoản Vercel do kết nối trước đó chưa có quyền tạo dự án.
 
-## Verification
-Run `node test.cjs`. Syntax and logic checks passed. Browser tested search/select, H31001 answer entry, reload persistence, Chinese text input, submission, objective scoring, writing review, history, and H10901 free-practice pause/resume. External PDF rendering did not complete in the test browser; fallback links and local selector are provided. Actual MP3 playback was not verified with an official audio file.
+## Sửa lỗi
 
-## Deployment status
-Not deployed: earlier Vercel creation returned 403 (no project creation permission). Current team project listing remains empty. GitHub repository access is not yet available. No production URL is claimed.
+- PDF nguồn đặt X-Frame-Options: SAMEORIGIN, khiến iframe trên domain khác bị chặn. Thay iframe bằng PDF.js được đóng gói nội bộ, đọc PDF cùng origin.
+- 6 PDF và 6 MP3 có sẵn trong assets/exams. Audio giải nén từ gói chính thức, chuyển mono MP3 48 kbps / 32 kHz để giảm dung lượng; không đổi tốc độ và không cắt nội dung.
+- Audio phát trực tiếp, điều khiển tốc độ, lưu vị trí nghe, báo lỗi và tải lại.
+- PDF có chuyển trang, phóng to/thu nhỏ, báo lỗi, tải lại; vẫn cho mở tab riêng/tải và chọn file cá nhân.
+- Không phụ thuộc CDN cho PDF.js hoặc Google Fonts. CMap và font dự phòng của PDF.js được đóng gói cùng app.
+- Giữ namespace hsk-studio-v2 để bảo toàn lịch sử và bài làm cũ.
+
+## Tài liệu
+
+Nguồn: https://old.chinesetest.cn/godownload.do
+Các bản PDF: https://old.chinesetest.cn/userfiles/file/HSK/level{1..6}/{mã đề}.pdf
+Gói audio tương ứng có đuôi .rar. Tải ngày 09/11/2026.
+Các mã: H10901, H20901, H31001, H41001, H51001, H61001.
+Nội dung đề thuộc đơn vị phát hành; ứng dụng không liên kết với Chinese Test. Giấy phép Apache 2.0 của PDF.js tại vendor/PDFJS-LICENSE.
+
+## Giới hạn
+
+- Bộ đề HSK hệ 2.0. Chỉ H31001 chấm tự động 70 câu khách quan; phần viết và các đề khác tự đối chiếu PDF.
+- Đây là chế độ luyện đề giấy với đồng hồ tổng; chưa mô phỏng khóa từng phần kỳ thi máy.
+- Bài làm chỉ lưu ở trình duyệt hiện tại. Có thể xuất JSON/CSV.
+- Trình đọc PDF dùng canvas; có link PDF gốc để dùng trình đọc tài liệu phù hợp nhu cầu hỗ trợ tiếp cận.
+- Đã kiểm tra file PDF, giải mã toàn bộ MP3, thời lượng, đường dẫn tài nguyên, logic dữ liệu và cú pháp JS. Kiểm thử tương tác trình duyệt bản v3 chưa hoàn thành do giới hạn truy cập của môi trường xem thử.
