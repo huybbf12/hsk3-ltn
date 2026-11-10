@@ -1,0 +1,44 @@
+[
+  {
+    "id": "H10901",
+    "pages": 14,
+    "audioSeconds": 874.008,
+    "pdfSha256": "550263995e8882e75bca1ad90a3c8468226fbbe1139fbecd058a5fc1f9928e53",
+    "audioSha256": "86f27a69ed2911ed7c18b8ff063666e6c64a286036d6ed9586a219f9cd59c758"
+  },
+  {
+    "id": "H20901",
+    "pages": 18,
+    "audioSeconds": 1559.808,
+    "pdfSha256": "61575a9aa25c564e0d7fe147d52c10da49581543ec597074701bce4a308affe9",
+    "audioSha256": "0017f20ced7ccf3ea1482b2abca9393f633188340e366a6ae073bcc5f08f6fb2"
+  },
+  {
+    "id": "H31001",
+    "pages": 22,
+    "audioSeconds": 2177.928,
+    "pdfSha256": "fafdab23a1a63a7f571bf44fb8dd0df8907f7c20d4b0c0840fac1c2b8ac3194f",
+    "audioSha256": "4422113c73063cb82709a8fba49842d9854c41315a1754defd09f2985b45af69"
+  },
+  {
+    "id": "H41001",
+    "pages": 24,
+    "audioSeconds": 1855.584,
+    "pdfSha256": "f386635792a03936200ab21e698d41fcdf8945123e47dfbd9f589f25ed8e7874",
+    "audioSha256": "298088ff9608e21760c835ad3e3b60cea67a22d89b360f6d5dd8fbb90500a9d9"
+  },
+  {
+    "id": "H51001",
+    "pages": 25,
+    "audioSeconds": 1815.948,
+    "pdfSha256": "5ec8f27edcc5ddb5b346dfd295558e88c71538cac210451cfdf201bdd972b602",
+    "audioSha256": "75a6491ef969f6e485d080b0f0f9348299c1fd2cfd1d9576c84dc351ac768455"
+  },
+  {
+    "id": "H61001",
+    "pages": 30,
+    "audioSeconds": 2163.024,
+    "pdfSha256": "e2259474eb62ff792ef125d310c9d6029ae46d88a424a58981844c28d54c7c45",
+    "audioSha256": "ffe4fd1ac3d77f9407ecd4d614e79f622dfaf927224831323246dcff1297f31c"
+  }
+]
